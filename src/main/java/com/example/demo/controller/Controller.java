@@ -12,11 +12,11 @@ import java.util.List;
 public class Controller {
 
     @Autowired
-    private DtoDogService inter;
+    private DtoDogService dtoDogService;
 
     @GetMapping(path = "/dogg")
     public List<DogDto> getAllDogs() {
-        return inter.findAll();
+        return dtoDogService.findAll();
     }
 
 //    @GetMapping(path = "/dogdto")

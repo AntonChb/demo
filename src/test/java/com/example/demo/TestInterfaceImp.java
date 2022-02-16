@@ -10,29 +10,25 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.test.util.ReflectionTestUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.any;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestInterfaceImp {
-
-    @Autowired
-    DtoDogServiceImp dogDtoServiceImp;
 
     @Mock
     private RestTemplate restTemplate;
 
     @InjectMocks
-    private DtoDogServiceImp interfaceImp = new DtoDogServiceImp();
+    DtoDogServiceImp dogDtoServiceImp = new DtoDogServiceImp();
+
 
     @Before
     public void setUp() {
-        ReflectionTestUtils.setField(interfaceImp, "url", "http://localhost:8080/dog");
+        ReflectionTestUtils.setField(dogDtoServiceImp, "url", "http://localhost:8080/dog");
     }
 
     @Test
@@ -45,7 +41,7 @@ public class TestInterfaceImp {
         Mockito.when(restTemplate.getForObject(string, List.class))
                 .thenReturn(dogDtos);
 
-        List<DogDto> result = interfaceImp.findAll();
+        List<DogDto> result = dogDtoServiceImp.findAll();
         Assert.assertEquals(result, dogDtos);
     }
 }

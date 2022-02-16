@@ -8,14 +8,12 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+
 @Service
 public class DtoDogServiceImp implements DtoDogService {
 
     @Value("${service.url}")
     public String url;
-
-    @Autowired
-    DtoDogService dtoDogService;
 
     @Autowired
     private RestTemplate restTemplate;

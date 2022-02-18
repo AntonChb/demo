@@ -18,7 +18,7 @@ public class Controller {
     public List<DogDto> getAllDogs() {
         return dtoDogService.findAll();
     }
-
+//      change1
 //    @GetMapping(path = "/dogdto")
 //    public DogDto oneDog() {
 //
